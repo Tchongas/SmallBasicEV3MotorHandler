@@ -1,0 +1,106 @@
+Initialise()
+
+GraphicsWindow.BackgroundColor = "Black"
+GraphicsWindow.FontName=   "Arial Black"
+GraphicsWindow.FontSize=   100
+GraphicsWindow.FontBold=   "True"
+GraphicsWindow.FontItalic= "False"
+GraphicsWindow.BrushColor= "White"
+
+text = Shapes.AddText("Comece")
+Shapes.Move   (text, 430,300)
+ 
+'------------------------------------------------
+'GAME LOOP
+'------------------------------------------------
+ 
+ While ("True")
+   
+  UpdateGamePlay()
+  UpdateFrame()
+  
+EndWhile
+ 
+'------------------------------------------------
+'Funçoes
+'------------------------------------------------
+ 
+Sub Initialise
+  'GraphicsWindow
+  GraphicsWindow.Title = "Quimica"
+  gw = 1920
+  gh = 1080
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+  'Register events
+  GraphicsWindow.KeyDown = OnKeyDown
+  GraphicsWindow.KeyUp = OnKeyUp
+  
+  
+  'Teclas
+  keyY = "False"
+  keyU = "False"
+  keySpace = "False"
+  keyShift = "False"
+  
+EndSub
+ 
+Sub UpdateGamePlay
+  
+  If (keyY) Then
+    Shapes.SetText(text,"Garra Aberta")
+    Shapes.Move   (text, 350,300)
+    Motor.Move("D",30,10,"true")
+  EndIf
+  If (keyU) Then
+    Shapes.SetText(text,"Garra Fechada")
+    Shapes.Move   (text, 350,300)
+    Motor.Move("D",-20,10,"true")
+  EndIf
+  If (keySpace) Then
+    Shapes.SetText(text,"Subindo Garra")
+    Shapes.Move   (text, 350,300)
+    Motor.Move("D",-20,20,"true")
+  EndIf
+  If (keyShift) Then
+    Shapes.SetText(text,"Descendo Garra")
+    Shapes.Move   (text, 350,300)
+    Motor.Move("D",-20,20,"true")
+    
+  EndIf
+EndSub
+ 
+Sub UpdateFrame
+
+EndSub
+ 
+'------------------------------------------------
+'Teclas
+'------------------------------------------------
+ 
+Sub OnKeyDown
+  lastKey = GraphicsWindow.LastKey
+ If (lastKey = "Y") Then
+    keyY = "True"
+  ElseIf (lastKey = "U") Then
+    keyU = "True"
+  ElseIf (lastKey = "Space") Then
+    keySpace = "True"
+  ElseIf (lastKey = "LeftShift") Then
+    keyShift = "True"
+  EndIf
+EndSub
+ 
+Sub OnKeyUp
+  lastKey = GraphicsWindow.LastKey
+  If (lastKey = "Y") Then
+    keyY = "False"
+  ElseIf (lastKey = "U") Then
+    keyU = "False"
+  ElseIf (lastKey = "Space") Then
+    keySpace = "False"
+  ElseIf (lastKey = "LeftShift") Then
+    keyShift = "False"
+  EndIf
+EndSub
+ 
