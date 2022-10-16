@@ -1,2 +1,3 @@
-# BasicMotorHandler
-Small basic motor engine that works with ev3
+# Ev3 Remote motor controller
+
+[make sure you read](https://sites.google.com/site/ev3basic/ev3-basic-programming "ev3 small basic extension documentation")
